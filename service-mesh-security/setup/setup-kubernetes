@@ -1,4 +1,6 @@
 #!/bin/bash
+CONSUL_HELM_VERSION=0.7.0
+
 # Wait for tiller to be available
 until helm --kubeconfig=/etc/kubernetes/admin.conf list
 do
@@ -7,6 +9,10 @@ done
 
 # Clone the config repo (we should perhaps split this up into multiple repos, one for each setup).
 git clone http://github.com/hashicorp/da-instruqt-security /tmp/security
+
+# Fetch the latest helm chart
+wget https://github.com/hashicorp/consul-helm/archive/v${CONSUL_HELM_VERSION}.zip -O /tmp/consul-helm.zip
+unzip /tmp/consul-helm.zip -d /tmp/security/exercises/01-setup-consul/files/consul-helm
 
 # Run emojify app
 kubectl --kubeconfig=/etc/kubernetes/admin.conf apply -f  /tmp/security/exercises/01-setup-consul/files/app
