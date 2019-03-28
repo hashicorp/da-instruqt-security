@@ -1,0 +1,6 @@
+client:
+  enabled: "-" # enable consul agent on each node
+  grpc: false # enable gRPC listener for Envoy
+
+connectInject:
+  enabled: false # enable consul connect inject for k8s
