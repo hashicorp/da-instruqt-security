@@ -24,6 +24,9 @@ challenges:
     to the actual first challenge, when the setup is stable.
   assignment: This challenge is only here for setup. Move the scripts of this challenge
     to the actual first challenge, when the setup is stable.
+  notes:
+  - type: text
+    contents: helm install -f values.yml -n consul ./consul-helm-0.7.0
   tabs:
   - title: Shell
     type: terminal
@@ -31,7 +34,7 @@ challenges:
   - title: Editor
     type: code
     hostname: kubernetes
-    path: /tmp/security/files/consul-helm
+    path: /tmp/security/exercises/01-setup-consul/files/consul-helm
   - title: Emojify
     type: service
     hostname: kubernetes
@@ -48,4 +51,4 @@ challenges:
     port: 8001
   difficulty: basic
   timelimit: 3600
-checksum: "1561325986333665745"
+checksum: "12998501178697238771"

@@ -8,12 +8,8 @@ done
 # Clone the config repo (we should perhaps split this up into multiple repos, one for each setup).
 git clone http://github.com/hashicorp/da-instruqt-security /tmp/security
 
-# Install consul by running helm chart
-#helm --kubeconfig=/etc/kubernetes/admin.conf install -f /tmp/service-mesh/exercises/lab-01/02-install-consul/files/values.yaml /tmp/service-mesh/exercises/lab-01/02-install-consul/files/consul
-
 # Run emojify app
-#kubectl --kubeconfig=/etc/kubernetes/admin.conf apply -f /tmp/service-mesh/exercises/lab-01/03-install-emojify-app/files/app
+kubectl --kubeconfig=/etc/kubernetes/admin.conf apply -f  /tmp/security/exercises/01-setup-consul/files/app
 
-# Run prometheus + grafana
-#kubectl --kubeconfig=/etc/kubernetes/admin.conf apply -f /tmp/service-mesh/exercises/lab-01/04-install-prometheus-and-grafana/files/metrics-server
-#kubectl --kubeconfig=/etc/kubernetes/admin.conf apply -f /tmp/service-mesh/exercises/lab-01/04-install-prometheus-and-grafana/files/prometheus
+# Set workdir
+set-workdir "/tmp/security/exercises/01-setup-consul/files/consul-helm"
