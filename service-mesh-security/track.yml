@@ -22,8 +22,12 @@ challenges:
   title: Setup
   teaser: This challenge is only here for setup. Move the scripts of this challenge
     to the actual first challenge, when the setup is stable.
-  assignment: This challenge is only here for setup. Move the scripts of this challenge
-    to the actual first challenge, when the setup is stable.
+  assignment: "# Install Consul Connect on Kubernetes\r\n\r\nModify the values.yml
+    file to enable the connect features\r\n\r\n```\r\nclient:\r\n  enabled: true\r\n
+    \ grpc: true\r\n\r\nconnectInject:\r\n  enabled: true\r\n```\r\n\r\nYou can then
+    deploy the helm chart using the command\r\n\r\n```\r\nconsul helm install -v values.yml
+    \r\n -n consul  ./consul-helm-0.7.0\r\n```\r\n\r\nYou can test Consul has been
+    configured correctly by viewing the UI in the tabs"
   notes:
   - type: text
     contents: helm install -f values.yml -n consul ./consul-helm-0.7.0
@@ -51,4 +55,4 @@ challenges:
     port: 8001
   difficulty: basic
   timelimit: 3600
-checksum: "12998501178697238771"
+checksum: "11688566600966312062"
