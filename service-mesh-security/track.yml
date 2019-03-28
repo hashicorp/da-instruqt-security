@@ -1,0 +1,29 @@
+slug: service-mesh-security
+id: bi8lzub8nryh
+type: track
+title: Security
+teaser: Security
+description: Security
+icon: https://storage.googleapis.com/instruqt-frontend/assets/hashicorp/tracks/consul.png
+tags:
+- ""
+owner: hashicorp
+developers:
+- jackson.nic@gmail.com
+- christie@hashicorp.com
+- anubhav9mishra@gmail.com
+- eveld@hashicorp.com
+private: false
+published: false
+challenges:
+- slug: setup
+  id: lsvjerqvwsyk
+  type: challenge
+  title: Setup
+  teaser: This challenge is only here for setup. Move the scripts of this challenge
+    to the actual first challenge, when the setup is stable.
+  assignment: This challenge is only here for setup. Move the scripts of this challenge
+    to the actual first challenge, when the setup is stable.
+  difficulty: basic
+  timelimit: 3600
+checksum: "9057344267247138557"
