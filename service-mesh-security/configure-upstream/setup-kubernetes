@@ -1,0 +1,9 @@
+#!/bin/bash
+
+which set-workdir
+env
+
+# Set workdir
+set-workdir "/tmp/security/exercises/03-setup-upstream/files/app"
+
+kubectl apply -f /tmp/security/exercises/03-setup-upstream/files/app

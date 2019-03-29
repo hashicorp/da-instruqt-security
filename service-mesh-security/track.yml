@@ -28,7 +28,8 @@ challenges:
     true\r\n\r\nconnectInject:\r\n  enabled: true\r\n```\r\n\r\nYou can then deploy
     the helm chart using the command\r\n\r\n```\r\nhelm install -f values.yml \\\r\n
     \ -n consul  ./consul-helm-0.7.0\r\n```\r\n\r\nYou can test Consul has been configured
-    correctly by viewing the UI in the tabs"
+    correctly by viewing the UI in the tabs\r\n\r\nIf you make a mistake you can delete
+    the helm chart with the following command\r\n\r\n```\r\nhelm delete --purge consul\r\n```"
   notes:
   - type: text
     contents: helm install -f values.yml -n consul ./consul-helm-0.7.0
@@ -101,4 +102,29 @@ challenges:
     port: 30010
   difficulty: basic
   timelimit: 500
-checksum: "7070774917156683762"
+- slug: configure-upstream
+  id: 4ybz7iawmujy
+  type: challenge
+  title: Configuring Consul Connect upstreams
+  teaser: In this challenge you will learn how to configure upstreams with Consul
+    connect
+  assignment: "Configure the upstreams for the ingress pod, we need to expose the
+    emojify-api on port 8000 and emojify-website on port 8001.  You can do this by
+    adding an additional line to the pod annotations.\r\n\r\n```\r\n\"consul.hashicorp.com/connect-service-upstreams\":
+    \"emojify-api:8000,emojify-website:8001\"\r\n```\r\n\r\nOnce you have configured
+    the upstreams redeploy your pod.\r\n\r\n`kubectl apply -f ingress`\r\n\r\nYou
+    can check that your configuration is correct by viewing the emojify webiste in
+    the tabs."
+  notes:
+  - type: text
+    contents: "Upstreams allow you configure the Envoy sidecar to expose another service
+      in the mesh at a local address.\r\n\r\nThe local service does not need to have
+      any concept of service discovery or the location of the upstream service it
+      can simply use the exposed localhost address for a connection.\r\n\r\n```\r\n
+      \     annotations:\r\n        \"consul.hashicorp.com/connect-inject\": \"true\"\r\n
+      \       \"consul.hashicorp.com/connect-service-upstreams\": \"emojify-api:8000,emojify-website:8001\"\r\n```\r\n\r\nIn
+      the above example we are exposing the emojify-api at localhost:8000 and the
+      emojify website at localhost:8001"
+  difficulty: basic
+  timelimit: 500
+checksum: "13537094949561227400"
