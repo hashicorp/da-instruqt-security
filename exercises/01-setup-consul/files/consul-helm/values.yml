@@ -4,11 +4,14 @@ server:
   bootstrapExpect: 1
 
 ui:
-  enabled: true
+  enabled: false # set to true to enable Consul UI
+  service:
+    enabled: false # set to true to expose Consul UI as a service
+    type: null
 
 client:
-  enabled: "-" # enable consul agent on each node
+  enabled: "-" # enable Consul agent on each node
   grpc: false # enable gRPC listener for Envoy
 
 connectInject:
-  enabled: false # enable consul connect inject for k8s
+  enabled: false # enable Consul Connect inject for k8s
