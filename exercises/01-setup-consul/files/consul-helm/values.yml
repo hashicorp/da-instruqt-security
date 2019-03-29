@@ -1,3 +1,10 @@
+server:
+  enabled: true
+  replicas: 1
+  bootstrapExpect: 1
+ui:
+  enabled: true
+
 client:
   enabled: "-" # enable consul agent on each node
   grpc: false # enable gRPC listener for Envoy

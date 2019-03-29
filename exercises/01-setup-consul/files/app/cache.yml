@@ -27,8 +27,6 @@ spec:
     metadata:
       labels:
         app: emojify-cache
-      annotations:
-        "prometheus_io_scrape": "true"
     spec:
       containers:
       - name: emojify-cache
@@ -40,15 +38,3 @@ spec:
           value: "0.0.0.0"
         - name: STATSD_ADDRESS
           value: "localhost:9125"
-
-      - name: prometheus-statsd
-        image: prom/statsd-exporter:latest
-        ports:
-          - name: metrics
-            containerPort: 9102
-        resources:
-          limits:
-            memory: 100Mi
-          requests:
-            cpu: 100m
-            memory: 100Mi

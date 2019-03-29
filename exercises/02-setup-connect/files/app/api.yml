@@ -28,6 +28,8 @@ spec:
     metadata:
       labels:
         app: emojify-api
+      annotations:
+        "consul.hashicorp.com/connect-inject": "true"
     spec:
       containers:
       - name: emojify-api

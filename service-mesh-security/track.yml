@@ -20,14 +20,14 @@ challenges:
   id: lsvjerqvwsyk
   type: challenge
   title: Setup
-  teaser: This challenge is only here for setup. Move the scripts of this challenge
-    to the actual first challenge, when the setup is stable.
+  teaser: In this challenge you will learn how to deploy Consul Connect to Kubernetes
+    using a Helm chart
   assignment: "# Install Consul Connect on Kubernetes\r\n\r\nModify the values.yml
     file to enable the connect features\r\n\r\n```\r\nclient:\r\n  enabled: true\r\n
-    \ grpc: true\r\n\r\nconnectInject:\r\n  enabled: true\r\n```\r\n\r\nYou can then
-    deploy the helm chart using the command\r\n\r\n```\r\nconsul helm install -v values.yml
-    \r\n -n consul  ./consul-helm-0.7.0\r\n```\r\n\r\nYou can test Consul has been
-    configured correctly by viewing the UI in the tabs"
+    \ grpc: true\r\n\r\n...\r\n\r\nconnectInject:\r\n  enabled: true\r\n```\r\n\r\nYou
+    can then deploy the helm chart using the command\r\n\r\n```\r\nhelm install -f
+    values.yml \\\r\n  -n consul  ./consul-helm-0.7.0\r\n```\r\n\r\nYou can test Consul
+    has been configured correctly by viewing the UI in the tabs"
   notes:
   - type: text
     contents: helm install -f values.yml -n consul ./consul-helm-0.7.0
@@ -55,4 +55,47 @@ challenges:
     port: 8001
   difficulty: basic
   timelimit: 3600
-checksum: "8535318126871102292"
+- slug: enable-connect
+  id: vp8e3ttfewg6
+  type: challenge
+  title: Enabling Consul Connect for a pod
+  teaser: In this challenge you will enable Consul Connect for a pod by adding Kubernetes
+    annotations
+  assignment: "Configure the deployment for the ingress pod to add the consul connect
+    injection annotation.\r\n\r\nOnce you have configured inject re-deploy the pod
+    using kubectl `kubectl -f ingress.yml`.\r\n\r\nYou can confirm that Consul has
+    automatically injected the Envoy dataplane as a sidecar by inspecting the pod
+    in the Kubernetes dashboard or by running `kubectl describe pod`."
+  notes:
+  - type: text
+    contents: "Consul Connect can automatically add and configure a Envoy sidecar
+      for your pod.\r\n\r\nTo enable this we add the annotation `\"consul.hashicorp.com/connect-inject\":
+      \"true\"` to our templates metadata.\r\n\r\n```\r\nspec:\r\n  replicas: 1\r\n
+      \ selector:\r\n    matchLabels:\r\n      app: emojify-api\r\n  template:\r\n
+      \   metadata:\r\n      labels:\r\n        app: emojify-api\r\n      annotations:\r\n
+      \       \"consul.hashicorp.com/connect-inject\": \"true\"\r\n```"
+  tabs:
+  - title: Shell
+    type: terminal
+    hostname: kubernetes
+  - title: Emojify
+    type: service
+    hostname: kubernetes
+    port: 30000
+  - title: Consul
+    type: service
+    hostname: kubernetes
+    path: /ui/
+    port: 30010
+  - title: Kubernetes
+    type: service
+    hostname: kubernetes
+    path: /api/v1/namespaces/kube-system/services/https:kubernetes-dashboard:/proxy/#!/deployment?namespace=default
+    port: 8001
+  - title: Editor
+    type: code
+    hostname: kubernetes
+    path: /tmp/security/exercises/02-setup-connect/files/app
+  difficulty: basic
+  timelimit: 500
+checksum: "12283293421375811271"
