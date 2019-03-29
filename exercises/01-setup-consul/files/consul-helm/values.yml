@@ -5,6 +5,7 @@ server:
 
 ui:
   enabled: false # set to true to enable Consul UI
+  
   service:
     enabled: false # set to true to expose Consul UI as a service
     type: NodePort

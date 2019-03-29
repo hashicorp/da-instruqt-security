@@ -53,7 +53,7 @@ challenges:
     type: service
     hostname: kubernetes
     path: /ui/
-    port: 31410
+    port: 30010
   difficulty: basic
   timelimit: 3600
 - slug: enable-connect
@@ -98,7 +98,7 @@ challenges:
     type: service
     hostname: kubernetes
     path: /ui/
-    port: 31410
+    port: 30010
   difficulty: basic
   timelimit: 500
-checksum: "5638731959044354236"
+checksum: "10766286072683076045"
