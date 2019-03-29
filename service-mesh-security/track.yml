@@ -62,9 +62,9 @@ challenges:
   title: Enabling Consul Connect for a pod
   teaser: In this challenge you will enable Consul Connect for a pod by adding Kubernetes
     annotations
-  assignment: "Configure the deployment for the ingress pod to add the consul connect
+  assignment: "Configure the deployment for the cache pod to add the consul connect
     injection annotation.\r\n\r\n[https://www.consul.io/docs/platform/k8s/connect.html](https://www.consul.io/docs/platform/k8s/connect.html)\r\n\r\nOnce
-    you have configured inject re-deploy the pod using kubectl `kubectl -f ingress.yml`.\r\n\r\nYou
+    you have configured inject re-deploy the pod using kubectl `kubectl -f cache.yml`.\r\n\r\nYou
     can confirm that Consul has automatically injected the Envoy dataplane as a sidecar
     by inspecting the pod in the Kubernetes dashboard or by running `kubectl describe
     pod`.\r\n\r\n**HINT:** You can look at the api.yml file for the correct configuration
@@ -74,8 +74,8 @@ challenges:
     contents: "Consul Connect can automatically add and configure a Envoy sidecar
       for your pod.\r\n\r\nTo enable this we add the annotation `\"consul.hashicorp.com/connect-inject\":
       \"true\"` to our templates metadata.\r\n\r\n```\r\nspec:\r\n  replicas: 1\r\n
-      \ selector:\r\n    matchLabels:\r\n      app: emojify-api\r\n  template:\r\n
-      \   metadata:\r\n      labels:\r\n        app: emojify-api\r\n      annotations:\r\n
+      \ selector:\r\n    matchLabels:\r\n      app: emojify-cache\r\n  template:\r\n
+      \   metadata:\r\n      labels:\r\n        app: emojify-cache\r\n      annotations:\r\n
       \       \"consul.hashicorp.com/connect-inject\": \"true\"\r\n```"
   tabs:
   - title: Shell
@@ -101,4 +101,4 @@ challenges:
     port: 30010
   difficulty: basic
   timelimit: 500
-checksum: "10766286072683076045"
+checksum: "7070774917156683762"

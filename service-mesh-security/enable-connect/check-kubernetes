@@ -1,0 +1,19 @@
+#!/bin/bash
+
+echo "Checking the solution of the challenge"
+
+cat cache.yml | grep annotations
+if [ $? != 0 ]; then
+  fail-message "Please make sure you added annotations metadata to the cache"
+fi
+
+cat cache.yml | grep '"consul.hashicorp.com/connect-inject": "true"'
+if [ $? != 0 ]; then
+  fail-message "Please make sure you added the consul-inject annotation to the cache"
+fi
+
+kubectl describe pod $(kubectl get pods -l=app=emojify-cache -o name | sed 's/pod\///') | grep consul-connect-envoy-sidecar
+kubectl get pods | grep consul-server-0
+if [ $? != 0 ]; then
+  fail-message "Please make sure you deployed the cache"
+fi
