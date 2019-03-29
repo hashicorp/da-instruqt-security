@@ -125,6 +125,28 @@ challenges:
       \       \"consul.hashicorp.com/connect-service-upstreams\": \"emojify-api:8000,emojify-website:8001\"\r\n```\r\n\r\nIn
       the above example we are exposing the emojify-api at localhost:8000 and the
       emojify website at localhost:8001"
+  tabs:
+  - title: Shell
+    type: terminal
+    hostname: kubernetes
+  - title: Emojify
+    type: service
+    hostname: kubernetes
+    port: 30000
+  - title: Consul
+    type: service
+    hostname: kubernetes
+    path: /ui/
+    port: 30010
+  - title: Kubernetes
+    type: service
+    hostname: kubernetes
+    path: /api/v1/namespaces/kube-system/services/https:kubernetes-dashboard:/proxy/#!/deployment?namespace=default
+    port: 8001
+  - title: Editor
+    type: code
+    hostname: kubernetes
+    path: /tmp/security/exercises/03-setup-upstream/files/app
   difficulty: basic
   timelimit: 500
-checksum: "13537094949561227400"
+checksum: "2128201377522378963"

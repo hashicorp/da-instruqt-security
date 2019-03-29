@@ -6,4 +6,4 @@ env
 # Set workdir
 set-workdir "/tmp/security/exercises/03-setup-upstream/files/app"
 
-kubectl apply -f /tmp/security/exercises/03-setup-upstream/files/app
+kubectl --kubeconfig=/etc/kubernetes/admin.conf apply -f /tmp/security/exercises/03-setup-upstream/files/app
