@@ -44,16 +44,16 @@ challenges:
     type: service
     hostname: kubernetes
     port: 30000
-  - title: Consul
-    type: service
-    hostname: kubernetes
-    path: /ui/
-    port: 30010
   - title: Kubernetes
     type: service
     hostname: kubernetes
     path: /api/v1/namespaces/kube-system/services/https:kubernetes-dashboard:/proxy/#!/deployment?namespace=default
     port: 8001
+  - title: Consul
+    type: service
+    hostname: kubernetes
+    path: /ui/
+    port: 31410
   difficulty: basic
   timelimit: 3600
 - slug: enable-connect
@@ -85,11 +85,6 @@ challenges:
     type: service
     hostname: kubernetes
     port: 30000
-  - title: Consul
-    type: service
-    hostname: kubernetes
-    path: /ui/
-    port: 30010
   - title: Kubernetes
     type: service
     hostname: kubernetes
@@ -99,6 +94,11 @@ challenges:
     type: code
     hostname: kubernetes
     path: /tmp/security/exercises/02-setup-connect/files/app
+  - title: Consul
+    type: service
+    hostname: kubernetes
+    path: /ui/
+    port: 31410
   difficulty: basic
   timelimit: 500
-checksum: "11624158598421167710"
+checksum: "5638731959044354236"

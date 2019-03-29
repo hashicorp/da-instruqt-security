@@ -7,7 +7,7 @@ ui:
   enabled: false # set to true to enable Consul UI
   service:
     enabled: false # set to true to expose Consul UI as a service
-    type: null
+    type: NodePort
 
 client:
   enabled: "-" # enable Consul agent on each node
