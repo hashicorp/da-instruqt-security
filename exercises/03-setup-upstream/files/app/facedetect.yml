@@ -2,10 +2,10 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: emojify-facebox
+  name: emojify-facedetect
 spec:
   selector:
-    app: emojify-facebox
+    app: emojify-facedetect
   ports:
   - protocol: TCP
     port: 80
@@ -15,33 +15,26 @@ spec:
 apiVersion: apps/v1                                    
 kind: Deployment
 metadata:
-  name: emojify-facebox
+  name: emojify-facedetect
   labels:
-    app: emojify-facebox
+    app: emojify-facedetect
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: emojify-facebox
+      app: emojify-facedetect
   template:
     metadata:
       labels:
-        app: emojify-facebox
+        app: emojify-facedetect
       annotations:
         "consul.hashicorp.com/connect-inject": "true"
     spec:
       containers:
-      - name: emojify-facebox
-        image: "machinebox/facebox"
+      - name: emojify-facedetect
+        image: "nicholasjackson/emojify-facedetection:v0.1.2"
+        env:
+        - name: STATSD_ADDRESS
+          value: localhost:9125
         ports:
         - containerPort: 8080
-        env:
-        - name: MB_KEY
-          valueFrom:
-            secretKeyRef:
-              name: emojify
-              key: mb_key
-        - name: MB_ADDRESS
-          value: "0.0.0.0"
-        - name: MB_PORT
-          value: "8080"

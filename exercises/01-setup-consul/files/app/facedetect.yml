@@ -1,0 +1,38 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: emojify-facedetect
+spec:
+  selector:
+    app: emojify-facedetect
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 8080
+
+---                                                    
+apiVersion: apps/v1                                    
+kind: Deployment
+metadata:
+  name: emojify-facedetect
+  labels:
+    app: emojify-facedetect
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: emojify-facedetect
+  template:
+    metadata:
+      labels:
+        app: emojify-facedetect
+    spec:
+      containers:
+      - name: emojify-facedetect
+        image: "nicholasjackson/emojify-facedetection:v0.1.2"
+        env:
+        - name: STATSD_ADDRESS
+          value: localhost:9125
+        ports:
+        - containerPort: 8080

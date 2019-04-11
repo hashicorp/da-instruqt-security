@@ -30,11 +30,11 @@ spec:
         app: emojify-api
       annotations:
         "consul.hashicorp.com/connect-inject": "true"
-        "consul.hashicorp.com/connect-service-upstreams": "emojify-cache:8000,emojify-facebox:8001"
+        "consul.hashicorp.com/connect-service-upstreams": "emojify-cache:8000,emojify-facedetect:8001"
     spec:
       containers:
       - name: emojify-api
-        image: "nicholasjackson/emojify-api:v0.8.0"
+        image: "nicholasjackson/emojify-api:v0.9.0"
         imagePullPolicy: Always
         command: ["/service/emojify-api"]
         args: [
