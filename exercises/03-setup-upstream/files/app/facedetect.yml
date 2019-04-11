@@ -22,6 +22,6 @@ spec:
         image: "nicholasjackson/emojify-facedetection:v0.1.2"
         env:
         - name: STATSD_ADDRESS
-          value: localhost:9125
+          value: 127.0.0.1:9125
         ports:
         - containerPort: 9090

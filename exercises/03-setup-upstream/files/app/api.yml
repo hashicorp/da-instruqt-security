@@ -28,8 +28,8 @@ spec:
           "-authn-disable=true",
           "-bind-address=0.0.0.0:9090",
           "-statsd-server=127.0.0.1:9125",
-          "-cache-address=localhost:8000",
-          "-facebox-address=localhost:8001",
+          "-cache-address=127.0.0.1:8000",
+          "-facebox-address=127.0.0.1:8001",
           "-path=/",
         ]
         ports:
